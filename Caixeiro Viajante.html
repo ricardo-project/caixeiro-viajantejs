@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caixeiro Viajante</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Complete-edge-coloring.svg/350px-Complete-edge-coloring.svg.png">
+        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Raleway">
+        <meta charset=UTF-8>
+    </head>
+    <style>
+        #mapWorld {
+            padding: 80px 20px 20px 20px;
+            background-color: sienna;
+            box-shadow: black 5px 5px 4px;
+            border-radius: 100px;
+            margin-top: 20px;
+        } #imgBrasil {
+            position: absolute;
+            border-radius: 100px;
+            box-shadow: black 4px 4px 3px;
+        } .imgfinal {
+            width: cover;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            margin-left: 10px;
+            margin-right: 10px;
+            filter: contrast(1);
+        } .imgfinal:hover {
+            filter: contrast(1.5);
+        } .coordClass {
+            text-align: center;
+            position: absolute;
+            filter: invert(1);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            transform: scale(1);
+            transition: all 0.2s ease;
+        } .coordClass:hover {
+            transform: scale(1.2);
+        } #title {
+            text-align: center;
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: sienna;
+            border-bottom: 14px solid saddlebrown;
+            font-family: Roboto;
+            font-weight: bold;
+            color: white;
+            text-shadow: black 4px 4px 3px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        } #title:hover {
+            color: orange;
+        } #person {
+            width: cover;
+            position: absolute;
+        } #seta {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            cursor: pointer;
+        } .parag {
+            text-indent: 40px;
+            font-size: 20px;
+            text-align: justify;
+            font-family: Raleway;
+            text-shadow: black 3px 3px 3px;
+            cursor: pointer;
+        } #secPVC {
+            margin-bottom: 50px;
+            background-color: chocolate;
+            color: white;
+            padding: 25px;
+            border-radius: 45px;
+            box-shadow: black 6px 6px 5px;
+        } @media only screen and (min-width: 0px) {
+            #mapWorld, #imgBrasil {
+                width: 600px;
+                height: 570px;
+            } .imgfinal {
+                height: 100px;
+            } .imgfinal:hover {
+                height: 110px;
+            } #title {
+                font-size: 60px;
+            } #title:hover {
+                font-size: 70px;
+            } #person {
+                height: 80px;
+                margin-left: -80px;
+            } #seta {
+                display: none;
+            } #secPVC {
+                width: 90%;
+            }
+        } @media only screen and (min-width: 1000px) {
+            #mapWorld, #imgBrasil {
+                width: 900px;
+                height: 855px;
+            } .imgfinal {
+                height: 150px;
+            } .imgfinal:hover {
+                height: 170px;
+            } #title {
+                font-size: 80px;
+            } #title:hover {
+                font-size: 90px;
+            } #person {
+                height: 100px;
+                margin-left: -100px;
+            } #seta {
+                margin-left: 600px;
+                display: block;
+            } #secPVC {
+                width: 900px;
+            }
+        } @media only screen and (min-width: 1300px) {
+            #mapWorld, #imgBrasil {
+                width: 1200px;
+                height: 1140px;
+            } .imgfinal {
+                height: 200px;
+            } .imgfinal:hover {
+                height: 220px;
+            } #seta {
+                margin-left: 900px;
+                display: block;
+            }
+        } body {
+            background-color:coral;
+        } #botao {
+            margin-bottom: 5px;
+            display: none;
+        } input[type=button] {
+            font-size: 25px;
+            font-family: Roboto;
+            color: white;
+            background-color: salmon;
+            padding: 8px;
+            border: 5px solid tomato;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: black 4px 4px 3px;
+            text-shadow: black 3px 3px 3px;
+            transition: all 0.3s ease;
+        } input[type=button]:hover {
+            font-size: 30px;
+            color: orange;
+            background-color: tomato;
+            border-color: maroon;
+        } li {
+            font-size: 20px;
+            font-family: Raleway;
+            color: white;
+            text-shadow: black 3px 3px 3px;
+        } input[type=number] {
+            width: 300px;
+            font-size: 18px;
+            color: orange;
+            background-color: chocolate;
+            border-radius: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 3px;
+            box-shadow: black 3px 3px 3px;
+            border: 3px solid sienna;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        } input[type=number]:hover {
+            color: lightcoral;
+            background-color: maroon;
+        } input[type=text] {
+            font-size: 16px;
+            font-family: Raleway;
+            color: white;
+            background-color: brown;
+            padding: 5px;
+            border-radius: 10px;
+            border: 4px solid darkorange;
+            box-shadow: black 4px 4px 3px;
+        } footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            margin-left: -10px;
+            margin-right: -10px;
+            background-color: firebrick;
+            border-top: 16px solid maroon;
+            border-bottom: 16px solid maroon;
+        } .secFinal {
+            width: 600px;
+            height: 220px;
+            padding: 8px;
+            margin-top: 20px;
+            margin-left: 50px;
+            background-color: darkorange;
+            border-radius: 30px;
+            box-shadow: black 4px 4px 3px;
+            display: none;
+        } .secFinal2 {
+            width: 595px;
+            height: 150px;
+            overflow: auto;
+        } .seqSect {
+            font-family: Roboto;
+            font-size: 34px;
+            color:gainsboro;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        } .distSect {
+            font-family: Raleway;
+            font-size: 18px;
+            color:lightgoldenrodyellow;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        } #camTit, #distTit {
+            font-family: Raleway;
+            color: white;
+            margin-top: 10px;
+            text-shadow: black 4px 4px 3px;
+        } #camTit {
+            font-size: 40px;
+            margin-bottom: 10px;
+        } #distTit {
+            font-size: 28px;
+            margin-bottom: 22px;
+        } .pCoord {
+            font-family: Roboto;
+            position: relative;
+            margin-top: -40px;
+            font-weight: bold;
+            color: white;
+        } #imgeu {
+            position: absolute;
+            margin-right: 10px;
+            margin-top: 10px;
+            width: 180px; height: 180px;
+            border-radius: 90px;
+            box-shadow: black 4px 4px 3px;
+            margin-left: 305px;
+            filter: contrast(1) brightness(1);
+            transition: all 0.35s ease;
+            border: 0px solid saddlebrown;
+        } #imgeu:hover {
+            filter: contrast(1.5) brightness(0.9);
+            border-width: 5px;
+            border-radius: 95px;
+            margin-top: 3px;
+            margin-right: 7.5px;
+        } #nameeu {
+            position: absolute;
+            font-family: Roboto;
+            font-size: 55px;
+            margin-left: 20px; 
+            margin-top: 50px;
+            width: 300px;
+            word-wrap: normal;
+            color: white;
+            text-shadow: black 4px 4px 3px;
+            font-weight: bold;
+            transition: all 0.45s ease;
+        } #nameeu:hover {
+            color: silver;
+        } #titsecPVC {
+            color: silver;
+            font-family: Roboto;
+            font-size: 40px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: black 4px 4px 3px;
+            font-weight: bold;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        } #titsecPVC:hover {
+            font-size: 45px;
+            color: sandybrown;
+        }
+    </style>
+    <body onload="dimenswidth()" onresize="dimenswidth()">
+        <p id=title><img src="https://image.flaticon.com/icons/png/512/30/30417.png" id=person> Caixeiro Viajante</p>
+        <section id=secPVC>
+            <p id=titsecPVC>O que é o Caixeiro Viajante?</p>
+            <p style="text-align: center"><img src="https://otimizacaonapratica.files.wordpress.com/2015/11/pcv-grafo.png" style="width: 400px; height: 300px; cursor: pointer"></p>
+            <p class=parag><b>Problema do Caixeiro Viajante (PCV) é um problema que tenta determinar a menor rota para percorrer uma série de cidades</b> (visitando uma única vez cada uma delas), retornando à cidade de origem. <b>Ele é um problema de otimização NP-difícil</b> inspirado na necessidade dos vendedores em realizar entregas em diversos locais (as cidades) percorrendo o menor caminho possível, reduzindo o tempo necessário para a viagem e os possíveis custos com transporte e combustível. <a href="https://pt.wikipedia.org/wiki/Problema_do_caixeiro-viajante" style="color: orange">(Wikipédia, a enciclopédia livre)</a></p>
+            <p class=parag>Neste algoritmo, baseado na linguagem de programação JavaScript para front-end, <b>o Problema do Caixeiro Viajante está baseado na conexão de vértices de um grafo através de segmentos de retas</b>. Portanto, problemas que apresentam um conjunto de mais de dois pontos, todos colineares, serão considerados como sem solução.</p>
+        </section>
+        <article style="background-color: coral">
+            <img src="https://cdn.pixabay.com/photo/2013/07/13/10/30/icon-157360_960_720.png" id=seta onclick="clearInterval(mudMargTop); style.display = 'none'">
+            <p><input type=button value="Criar nova referência" onclick="createRef()"> <input type=button value="Recomeçar tudo" id=buttrein onclick="recomecar()" style="display: none"></p>
+            <ul id=coordn style="display: none">
+                <li><input type=number id=horizontal oninput="positAltrn(true)"> Distância horizontal (em quilômetros)</li>
+                <li><input type=number id=vertical oninput="positAltrn(true)"> Distância vertical (em quilômetros)</li>
+                <li style="margin-left: 20px; margin-top: 20px">Escolha uma capital do Brasil: <input type=text id=capital list=listcapt oninput="inserirCapt()"> <input type=button value="Limpar Dado" onclick="capital.value = ''; capital.focus()"></li>
+            </ul>
+            <datalist id=listcapt></datalist>
+            <input type=button value="Definir menor rota!" id=botao onclick="caixeiroRes()">
+            <section id=mapWorld>
+                <img src="https://www.guiageo.com/pictures/brasil-politico.jpg" id=imgBrasil>
+            </section>
+            <section id=possibCam class=secFinal>
+                <p id=camTit>Quais os caminhos possíveis?</p>
+                <section id=possibCam2 class=secFinal2>
+                    <!--Aqui ficam as possibilidades de viagem!-->
+                </section>
+            </section>
+            <section id=distCam class=secFinal>
+                <p id=distTit>Quais as distâncias entre cada par de pontos?</p>
+                <section id=distCam2 class=secFinal2>
+                    <!--Aqui ficam as respectivas distâncias-->
+                </section>
+            </section>
+            <section style="width: 500px; margin-top: 30px; padding-left: 110px; height: 200px; border-radius: 100px; box-shadow: black 4px 3px 3px; background-color: sandybrown; margin-left: -110px; cursor: pointer">
+                <p style="position: absolute; font-family: Raleway; margin-top: 10px; margin-bottom: 0px; font-size: 25px; color: white; text-shadow: black 3px 3px 3px">Desenvolvido por</p>
+                <p id=nameeu>Ricardo A. M. Germani</p>
+                <img src="eu.jpg" id=imgeu>
+            </section>
+        </article>
+        <footer>
+            <a href="http://passofundo.ifsul.edu.br/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Instituto_Federal_Sul-rio-grandense_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_Sul-rio-grandense_-_Marca_Vertical_2015.svg.png" class=imgfinal></a> <!--Instituto Federal Sul-Rio-Grandense-->
+            <a href="https://html.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" class=imgfinal></a> <!--HTML 5-->
+            <a href="https://www.javascript.com/"><img src="http://luizricardo.org/wordpress/wp-content/upload-files/2014/11/js-logo-badge-512.png" class=imgfinal></a> <!--JavaScript-->
+            <a href="https://www.w3schools.com/css/"><img src="https://logodownload.org/wp-content/uploads/2017/04/css-3-logo-1.png" class=imgfinal></a> <!--CSS 3-->
+            <a href="https://www.w3schools.com/"><img src="https://i0.wp.com/amai-lab.com/wp-content/uploads/2017/12/W3Schools_logo1.png?fit=500%2C200&ssl=1" class=imgfinal></a> <!--W3School-->
+        </footer>
+    </body>
+    <script>
+        var widthbody = new Array(0, 1000, 1300);
+        var widthImg;
+        var heightImg;
+        var namePosit = new Array();
+        function dimenswidth() {
+            var numwidth = 0;
+            for(var n = 0; n < widthbody.length; n++) {
+                if(window.innerWidth >= widthbody[n]) {
+                    numwidth++;
+                } else {
+                    break;
+                }
+            } widthImg = (numwidth + 1)*300;
+            heightImg = (numwidth + 1)*285;
+            for(var j = 0; j < positCoord.length; j++) {
+                coordenar(j);
+            }
+        } function nonePossibDist() {
+            if(possibCam.style.display == "block" && distCam.style.display == "block") {
+                possibCam.style.display = "none";
+                distCam.style.display = "none";
+            }
+        } function recomecar() {
+            mapWorld.innerHTML = "";
+            var imagem = document.createElement("img");
+            imagem.src = "https://www.guiageo.com/pictures/brasil-politico.jpg";
+            imagem.id = "imgBrasil";
+            document.getElementById("mapWorld").appendChild(imagem);
+            nonePossibDist();
+            buttrein.style.display = "none";
+            botao.style.display = "none";
+            coordn.style.display = "none";
+            positCoord = new Array();
+            namePosit = new Array();
+        } var grau = 0;
+        var mudMargTop = setInterval(function() {
+            seta.style.marginTop = tofix((20*Math.sin(180*grau/Math.PI)), 2) + "px";
+            grau += 0.00075;
+            if(grau == 180) {
+                grau = 0;
+            }
+        }, 10)
+        var positCoord = new Array(); //---> Armazena as informações de distância horizontal e vertical de cada ponto de referência!
+        var listCapt = new Array(["Aracaju", "Sergipe"], ["Belém", "Pará"], ["Belo Horizonte", "Minas Gerais"], ["Boa Vista", "Roraima"], ["Brasília", "Distrito Federal"], ["Campo Grande", "Mato Grosso do Sul"], ["Cuiabá", "Mato Grosso"], ["Curitiba", "Paraná"], ["Fernando de Noronha", "Pernambuco"], ["Florianópolis", "Santa Catarina"], ["Fortaleza", "Ceará"], ["Goiânia", "Goiás"], ["João Pessoa", "Paraíba"], ["Macapá", "Amapá"], ["Maceió", "Alagoas"], ["Manaus", "Amazonas"], ["Natal", "Rio Grande do Norte"], ["Palmas", "Tocantins"], ["Porto Alegre", "Rio Grande do Sul"], ["Porto Velho", "Rondônia"], ["Recife", "Pernambuco"], ["Rio Branco", "Acre"], ["Rio de Janeiro", "Rio de Janeiro (Estado)"], ["Salvador", "Bahia"], ["São Luis", "Maranhão"], ["São Paulo", "São Paulo (Estado)"], ["Teresina", "Piauí"], ["Vitória", "Espírito Santo"]);
+        var pointAct; //---> Representa o ponto de referência em foco!
+        var pointCapt = new Array(); //---> Posição horizontal e vertical das capitais do Brasil
+            pointCapt[0] = [1740, 370]; //---> Aracaju
+            pointCapt[1] = [510, 1456]; //---> Belém
+            pointCapt[2] = [946, -608]; //---> Belo Horizonte
+            pointCapt[3] = [-838, 1930]; //---> Boa Vista
+            pointCapt[4] = [548, -128]; //---> Brasília
+            pointCapt[5] = [-165, -628]; //---> Campo Grande
+            pointCapt[6] = [-324, -94]; //---> Cuiabá
+            pointCapt[7] = [375, -1189]; //---> Curitiba
+            pointCapt[8] = [2276, 1158]; //---> Fernando de Noronha
+            pointCapt[9] = [435, -1426]; //---> Florianópolis
+            pointCapt[10] = [1609, 1197]; //---> Fortaleza
+            pointCapt[11] = [404, -219]; //---> Goiânia
+            pointCapt[12] = [1996, 795]; //---> João Pessoa
+            pointCapt[13] = [227, 1623]; //---> Macapá
+            pointCapt[14] = [1893, 505]; //---> Maceió
+            pointCapt[15] = [-765, 1276]; //---> Manaus
+            pointCapt[16] = [1970, 950]; //---> Natal
+            pointCapt[17] = [520, 497]; //---> Palmas
+            pointCapt[18] = [165, -1689]; //---> Porto Alegre
+            pointCapt[19] = [-1185, 646]; //---> Porto Velho
+            pointCapt[20] = [1998, 687]; //---> Recife
+            pointCapt[21] = [-1605, 493]; //---> Rio Branco
+            pointCapt[22] = [1000, -940]; //---> Rio de Janeiro
+            pointCapt[23] = [1570, 142]; //---> Salvador
+            pointCapt[24] = [974, 1337]; //---> São Luis
+            pointCapt[25] = [649, -990]; //---> São Paulo
+            pointCapt[26] = [1138, 1050]; //---> Teresina
+            pointCapt[27] = [1319, -676]; //---> Vitória
+        for(var b = 0; b < listCapt.length; b++) {
+            var opt = document.createElement("option");
+            opt.value = listCapt[b][0];
+            opt.label = listCapt[b][1];
+            document.getElementById("listcapt").appendChild(opt);
+        } function createRef() {
+            nonePossibDist();
+            capital.value = "";
+            if(coordn.style.display == "none") {
+                coordn.style.display = "block";
+            } if(buttrein.style.display == "none") {
+                buttrein.style.display = "inline";
+            } var sectPosit = document.createElement("section");
+            pointAct = positCoord.length;
+            namePosit.push(pointAct);
+            const numImg = pointAct;
+            sectPosit.className = "coordClass";
+            sectPosit.style.marginLeft = Math.round(widthImg/2 - 20) + "px";
+            sectPosit.style.marginTop = Math.round(heightImg/2 - 40) + "px";
+            sectPosit.id = "coord" + numImg;
+            var imgPosit = document.createElement("img");
+            var pPosit = document.createElement("p");
+            pPosit.textContent = pointAct;
+            pPosit.className = "pCoord";
+            imgPosit.src = "https://cdn.icon-icons.com/icons2/653/PNG/512/locate_gps_navigation_pin_point_location_icon-icons.com_59906.png";
+            for(var k = 0; k < pointAct; k++) {
+                document.getElementById("coord" + k).style.filter = "invert(0)";
+            } imgPosit.style.width = "40px";
+            imgPosit.style.height = "40px";
+            sectPosit.onclick = function() {
+                nonePossibDist();
+                pointAct = numImg;
+                for(var j = 0; j < positCoord.length; j++) {
+                    if(j !== numImg) {
+                        document.getElementById("coord" + j).style.filter = "invert(0)";
+                    } else if(j == numImg) {
+                        document.getElementById("coord" + j).style.filter = "invert(1)";
+                    }
+                } horizontal.value = positCoord[pointAct][0];
+                horizontal.focus();
+                vertical.value = positCoord[pointAct][1];
+                putCapt();
+            }; if(positCoord.length == 1) {
+                botao.style.display = "block";
+            } positCoord.push(new Array(0, 0));
+            mapWorld.appendChild(sectPosit);
+            document.getElementById("coord" + numImg).appendChild(imgPosit);
+            document.getElementById("coord" + numImg).appendChild(pPosit);
+            horizontal.value = 0;
+            horizontal.focus();
+            vertical.value = 0;
+        } function positAltrn(newcond) {
+            nonePossibDist();
+            var horiz = parseFloat(horizontal.value);
+            var verti = parseFloat(vertical.value);
+            if(isNaN(horiz) == false && isNaN(verti) == false) {
+                if(Math.abs(horiz) <= 2322 && Math.abs(verti) <= 2206) {
+                    positCoord[pointAct][0] = horiz;
+                    positCoord[pointAct][1] = verti;
+                    coordenar(pointAct);
+                    if(newcond == true) {
+                        putCapt();
+                    }
+                } else {
+                    alert("Wow! Você ultrapassou o limite do mapa (!!!)... favor, insira outro valor");
+                    var idHV = "";
+                    if(Math.abs(horiz) > 2322) {
+                        idHV = "horizontal";
+                    } else if(Math.abs(verti) > 2206) {
+                        idHV = "vertical";
+                    } var backValor = "";
+                    for(var j = 0; j < document.getElementById(idHV).value.length - 1; j++) {
+                        backValor += document.getElementById(idHV).value.charAt(j);
+                    } document.getElementById(idHV).value = parseFloat(backValor);
+                    document.getElementById(idHV).focus();
+                }
+            }
+        } function coordenar(positf) {
+            document.getElementById("coord" + positf).style.marginLeft = Math.round(widthImg/2 - 20 + 62*(widthImg/1200)*positCoord[positf][0]/240) + "px";
+            document.getElementById("coord" + positf).style.marginTop = Math.round(heightImg/2 - 40 - 62*(heightImg/1140)*positCoord[positf][1]/240) + "px";
+        } function caixeiroRes() {
+            document.getElementById("possibCam").style.display = "none";
+            document.getElementById("distCam").style.display = "none";
+            for(var e = 0; e < positCoord.length; e++) {
+                for(var n = e + 1; n < positCoord.length; n++) {
+                    if(positCoord[e][0] == positCoord[n][0] && positCoord[e][1] == positCoord[n][1]) {
+                        alert("Há, pelo menos, dois pontos que possuem as mesmas coordenadas. Favor, reposicione-as em outras cooordenadas!");
+                        horizontal.value = parseFloat(horizontal.value);
+                        horizontal.focus();
+                        vertical.value = parseFloat(vertical.value);
+                        return;
+                    }
+                }
+            } var cont = 0;
+            var total = 0;
+            var conj = new Array(positCoord.length + 1);
+                conj[0] = 0;
+                conj[positCoord.length] = 0;
+            var distconj = new Array();
+            var distseq = new Array();
+            var dist = new Array();
+            for(var t = 0; t < positCoord.length; t++) {
+                for(var j = t + 1; j < positCoord.length; j++) {
+                    dist.push(Math.pow(Math.pow(positCoord[t][0] - positCoord[j][0], 2) + Math.pow(positCoord[t][1] - positCoord[j][1], 2), 0.5));
+                }
+            } definirRota();
+            distseq.sort(ordenar);
+            var quant = 1;
+            for(var u = 0; u < distseq.length - 1; u++) {
+                if(distseq[u] == distseq[u + 1]) {
+                    quant++;
+                } else if(distseq[u] !== distseq[u + 1]) {
+                    break;
+                }
+            } var final;
+            if(distseq.length == 0) {
+                final = "Não há possibilidades de caminhos, pois há mais de dois pontos, todos colineares!";
+            } else if(distseq.length > 0) {
+                possibCam2.innerHTML = "";
+                distCam2.innerHTML = "";
+                final = "A menor distância possível é de " + distseq[0] + " quilômetros";
+                if(quant == 1) {
+                    final += " pelo seguinte caminho:";
+                } else if(quant > 1) {
+                    final += " pelos seguintes caminhos:";
+                } for(var j = 0; j < distconj.length; j++) {
+                    var parag1 = document.createElement("p");
+                    var parag2 = document.createElement("p");
+                    parag1.className = "seqSect";
+                    parag2.className = "distSect";
+                    parag1.textContent = "";
+                    for(var g = 0; g < distconj[j][1].length; g++) {
+                        parag1.textContent += namePosit[distconj[j][1][g]];
+                        if(g !== distconj[j][1].length - 1) {
+                            parag1.textContent += " - ";
+                        }
+                    } parag2.textContent = distconj[j][0] + " quilômetro";
+                    document.getElementById("possibCam2").appendChild(parag1);
+                    document.getElementById("possibCam2").appendChild(parag2);
+                    if(distconj[j][0] !== 1) {
+                       parag2.textContent += "s"; 
+                    } if(distseq[0] == distconj[j][0]) {
+                        final += "\n";
+                        for(var k = 0; k < distconj[j][1].length; k++) {
+                            final += namePosit[distconj[j][1][k]];
+                            if(k !== distconj[j][1].length - 1) {
+                                final += " - ";
+                            }
+                        }
+                    }
+                } var contDistSect1 = 0;
+                var contDistSect2 = 1;
+                for(var s = 0; s < dist.length; s++) {
+                    var parag1 = document.createElement("p");
+                    var parag2 = document.createElement("p");
+                    parag1.className = "seqSect";
+                    parag2.className = "distSect";
+                    parag1.textContent = namePosit[contDistSect1] + " - " + namePosit[contDistSect2];
+                    contDistSect2++;
+                    if(contDistSect2 == positCoord.length) {
+                        contDistSect1++;
+                        contDistSect2 = contDistSect1 + 1;
+                    } parag2.textContent += tofix(dist[s], 5) + " quilômetro";
+                    if(dist[s] !== 1) {
+                        parag2.textContent += "s";
+                    } document.getElementById("distCam2").appendChild(parag1);
+                    document.getElementById("distCam2").appendChild(parag2);
+                }
+            } alert(final);
+            document.getElementById("possibCam").style.display = "block";
+            document.getElementById("distCam").style.display = "block";
+            function definirRota() {
+                cont++;
+                for(var h = 1; h < positCoord.length; h++) {
+                    var cond = false;
+                    for(var g = 1; g < cont; g++) {
+                        if(conj[g] == h) {
+                            cond = true;
+                        }
+                    } if(cond == false) {
+                        var condint = false;
+                        verifpointGph(false, (cont - 1));
+                        if(condint == false) {
+                            conj[cont] = h;
+                            if(cont < positCoord.length - 1) {
+                                definirRota();
+                            } else if(cont == positCoord.length - 1) {
+                                var condintFinal = false;
+                                verifpointGph(true, (conj.length - 1));
+                                if(condintFinal == false) {
+                                    distconj.push(new Array(0, [0]));
+                                    distseq.push(0);
+                                    for(var t = 0; t < conj.length - 1; t++) {
+                                        var ordem = new Array(conj[t], conj[t + 1]).sort(ordenar);
+                                        var addDist = dist[ordem[0]*(positCoord.length - 1 - (ordem[0] - 1)/2) + (ordem[1] - ordem[0] - 1)];
+                                        distconj[distconj.length - 1][0] += addDist;
+                                        distseq[distseq.length - 1] += addDist;
+                                        distconj[distconj.length - 1][1].push(conj[t + 1]);
+                                    } distconj[distconj.length - 1][0] = tofix(distconj[distconj.length - 1][0], 5);
+                                    distseq[distseq.length - 1] = tofix(distseq[distseq.length - 1], 5);
+                                }
+                            }
+                        } function verifpointGph(condvar, valposit) {
+                            for(var b = 0; b < positCoord.length; b++) {
+                                if(b !== conj[valposit] && b !== h && obtcons(conj[valposit], false) == obtcons(b, false) && obtcons(conj[valposit], true) == obtcons(b, true)) { //---> Verificar se os coeficientes da Função Afim são equivalentes!
+                                    var eixonum = 0;
+                                    if(obtcons(conj[valposit], false) == undefined) {
+                                        eixonum++;
+                                    } var pointconj = new Array(positCoord[conj[valposit]][eixonum], positCoord[h][eixonum]).sort(ordenar);
+                                    if(pointconj[0] < positCoord[b][eixonum] && positCoord[b][eixonum] < pointconj[1]) { //---> Pertençem à mesma reta, e o ponto está localizado entre ambos!
+                                        if(condvar == false) {
+                                            condint = true;
+                                        } if(condvar == true) {
+                                            condintFinal = true;  
+                                        } break;
+                                    }
+                                }
+                            }
+                        } function obtcons(valor, newcond) {
+                            var varx = positCoord[valor][0] - positCoord[h][0];
+                            if(varx == 0) { //---> Quando a variação de x for nula, retornar "indefinido"!
+                                return undefined;
+                            } else if(varx !== 0) {
+                                if(newcond == false) { //---> Constante Angular
+                                    return Math.floor(100*(positCoord[valor][1] - positCoord[h][1])/varx)/100;
+                                } else if(newcond == true) { //---> Termo independente
+                                    return Math.floor(100*(positCoord[valor][0]*positCoord[h][1] - positCoord[h][0]*positCoord[valor][1])/varx)/100;
+                                }
+                            }
+                        }
+                    }
+                } cont--;
+            }
+        } function inserirCapt() {
+            for(var j = 0; j < listCapt.length; j++) {
+                if(capital.value.toUpperCase() == listCapt[j][0].toUpperCase()) {
+                    horizontal.value = pointCapt[j][0];
+                    vertical.value = pointCapt[j][1];
+                    namePosit[pointAct] = listCapt[j][0];
+                    positAltrn(false);
+                    break;
+                }
+            }
+        } function putCapt() {
+            var condCap = false;
+            for(var v = 0; v < pointCapt.length; v++) {
+                if(parseFloat(horizontal.value) == pointCapt[v][0] && parseFloat(vertical.value) == pointCapt[v][1]) {
+                    capital.value = listCapt[v][0];
+                    namePosit[pointAct] = listCapt[v][0];
+                    condCap = true;
+                    break;
+                }
+            } if(condCap == false) {
+                capital.value = "";
+                namePosit[pointAct] = pointAct;
+            }
+        } var ordenar = function(a, b) { return (a - b) };
+        function tofix(valor, exp) { return (Math.floor(Math.ceil(Math.pow(10, exp)*valor))/Math.pow(10, exp)) }
+    </script>
+</html>
